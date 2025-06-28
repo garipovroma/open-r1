@@ -1,5 +1,4 @@
-export HF_HOME=/mnt/LLM
-export CUDA_VISIBLE_DEVICES=5
+export HF_HOME=/workspace/HF_CACHE
 
 ACCELERATE_LOG_LEVEL=info \
     accelerate launch --config_file recipes/accelerate_configs/zero3_single_gpu.yaml \
