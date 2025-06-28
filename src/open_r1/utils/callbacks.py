@@ -77,8 +77,22 @@ class PushToHubRevisionCallback(TrainerCallback):
                 future.add_done_callback(run_benchmark_callback)
 
 
+class NirvanaSnapshotCallback(TrainerCallback):
+    """stores shapshots when working in Nirvana environment"""
+
+    def on_save(self, args: TrainingArguments, state, control, **kwargs):
+        if state.is_local_process_zero:
+            import nirvana_dl
+
+            nirvana_dl.snapshot.dump_snapshot()
+
+    def on_train_end(self, args: TrainingArguments, state, control, **kwargs):
+        self.on_save(args, state, control, **kwargs)
+
+
 CALLBACKS = {
     "push_to_hub_revision": PushToHubRevisionCallback,
+    "nirvana_snapshot_callback": NirvanaSnapshotCallback
 }
 
 
