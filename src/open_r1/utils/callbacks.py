@@ -80,6 +80,9 @@ class PushToHubRevisionCallback(TrainerCallback):
 class NirvanaSnapshotCallback(TrainerCallback):
     """stores shapshots when working in Nirvana environment"""
 
+    def __init__(self, model_config) -> None:
+        self.model_config = model_config
+
     def on_save(self, args: TrainingArguments, state, control, **kwargs):
         if state.is_local_process_zero:
             import nirvana_dl
