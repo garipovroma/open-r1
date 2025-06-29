@@ -74,7 +74,6 @@ _deps = [
     "async-lru>=2.0.5",
     "aiofiles>=24.1.0",
     "pandas>=2.2.3",
-    "opentelemetry-proto==1.26.0,"
 ]
 
 # this is a lookup table with items like:
@@ -118,7 +117,6 @@ install_requires = [
     deps["trl"],
     deps["wandb"],
     deps["async-lru"],
-    deps["opentelemetry-proto"],
 ]
 
 setup(
